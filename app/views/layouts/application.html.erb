@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IpsyploosDemo</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div id="main_content">
+		
+		<div id="header">
+			<% if !user_signed_in? && current_page?(root_path) %>
+			<p class="sign_in"><%= link_to "Log In / Sign Up", new_user_session_path %></p>
+			<% end %>
+			<% if user_signed_in? %>
+				<div class="buttons">
+					<button class="button"> <%= link_to "AVON" %> </button>
+					<button class="button"> <%= link_to "MAC" %> </button>
+					<button class="button"> <%= link_to "SEPHORA" %> </button>
+					<br>
+					<button class="button"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>
+				</div>
+			<% end %>
+		</div>
+		<% flash.each do |name, msg| %>
+			<%= content_tag(:div, msg, class:"alert") %>
+		<% end %>
+
+
+		<%= yield %>		
+	</div>
+
+</body>
+</html>
