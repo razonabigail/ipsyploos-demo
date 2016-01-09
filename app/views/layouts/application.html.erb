@@ -16,9 +16,11 @@
 			<% end %>
 			<% if user_signed_in? %>
 				<div class="buttons">
-					<button class="button"> <%= link_to "AVON" %> </button>
-					<button class="button"> <%= link_to "MAC" %> </button>
-					<button class="button"> <%= link_to "SEPHORA" %> </button>
+					<form action="/processing" method="get"><input type="hidden" name="shop" value="avon"><input type="hidden" name="creative_id" value="32"><button>AVON</button></form>
+
+					<a class="btn button" href="/processing?shop=avon&creative_id=1">AVON</a> <br>
+					<a class="btn button" href="/processing?shop=maccosmetics&creative_id=1">MAC</a> <br>
+					<a class="btn button" href="/processing?shop=sephora&creative_id=1">SEPHORA</a>
 					<br>
 					<button class="button"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>
 				</div>

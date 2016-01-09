@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'processing' => 'processing#index'
+
+
   get 'homepage/index'
 
   devise_for :users
@@ -8,6 +11,8 @@ Rails.application.routes.draw do
   resources :advertisers
   #get 'affiliates/index'
   resources :affiliates
+
+  #resources :processing
 
   #devise_scope :user do
   #  root to: "devise/sessions#new"
