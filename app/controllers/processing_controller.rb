@@ -7,13 +7,14 @@ class ProcessingController < ApplicationController
   	user_id = "ipsy-user-#{current_user.id}"
 	puts "[DEBUG] user_id: #{user_id}"
 
-	#initialize
+	# initialize
 	affiliate_id = "0"
 	advertiser_id = "0"
 	offer_id = "0"
 	creative_id = "0"
 
 	# TODO affiliate_id should be queried from the database
+affiliate_id = "5789"
 
 
 	# TODO advertiser_id, creative_id, offer_id should be queried from the database
@@ -125,6 +126,7 @@ creating advertiser and offer after 3.264792307 seconds
 =end
 ######### END
 
+	puts "[DEBUG] affiliate_id: #{affiliate_id}"
 	puts "[DEBUG] shop: #{params[:shop]}"
 	puts "[DEBUG] advertiser_id: #{advertiser_id}"
 	puts "[DEBUG] offer_id: #{offer_id}"
@@ -139,14 +141,55 @@ creating advertiser and offer after 3.264792307 seconds
 	encoded_url = CGI.escape(url)
 	puts "[DEBUG] Encoded UNIQUE URL: #{encoded_url}"
 
-	# something to decode the URL
-	decoded_url = CGI.unescape(encoded_url)
-	puts "[DEBUG] Decoded UNIQUE URL: #{decoded_url}"
-	
+	# TODO sample url site
+	url = "www.shop.com"
+
+	url = "#{url}/unique_url=#{encoded_url}"
 
 
-
+	# TODO redirect to the shopping site
 
   	#redirect_to "http://www.#{shop}.com"
+	
+######## shopping site receives the unique URL
+
+	# get the parameter in unique_url
+	unique_url = encoded_url
+
+	# something to decode the URL
+	decoded_url = CGI.unescape(unique_url)
+	puts "[DEBUG] Decoded UNIQUE URL: #{decoded_url}"
+
+	# dummy data
+	price = "12.99"
+	product = "Lipstick"
+	brand = "mac"
+	transaction_id = "asdf1234"
+	secret = "secretkey"
+	
+	# upon successful payment in checkout
+
+	# create Conversion link
+	t0 = Time.now
+	conversion_url = "#{decoded_url}&p=f&s1=#{price}&s2=#{product}&s3=#{brand}&s4=#{transaction_id}&s5=#{secret}"
+	puts "In Shopping Site"
+	puts "[DEBUG] price: #{price}"
+	puts "[DEBUG] product: #{product}"
+	puts "[DEBUG] brand: #{brand}"
+	puts "[DEBUG] transaction_id: #{transaction_id}"
+	puts "[DEBUG] secret: #{secret}"
+	puts "[DEBUG] conversion_url: #{conversion_url}"
+
+	# sending the conversion link
+	xml = Nokogiri::XML(open(conversion_url))
+	if xml.search('success').text == "false"
+		puts "ERROR: problem in sending conversion_url"
+		return
+	end
+	puts xml
+	puts "after #{Time.now-t0} seconds"
+	#affiliate_id = xml.search('affiliate_id').text
+
+
   end
 end
