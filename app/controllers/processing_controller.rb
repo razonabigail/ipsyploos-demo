@@ -1,7 +1,7 @@
 class ProcessingController < ApplicationController
   def index
 
-	api_key = 'wSzLLbZyVZm1O9ZKQkzeDmt4wTYTKeC'
+	api_key = 'INSERT API KEY HERE'
 
   	#creative_id = params[:creative_id]
   	user_id = "ipsy-user-#{current_user.id}"
@@ -19,22 +19,38 @@ class ProcessingController < ApplicationController
 	# TODO advertiser_id, creative_id, offer_id should be queried from the database
 
 
-	# STATIC PARAMS FOR TESTING ONLY
-	affiliate_id = "1"
-	creative_id = "98"	
 
-	if "#{params[:shop]}" == "sephora"
-		advertiser_id = "56"
-		offer_id = "411"
-		creative_id = "1444"
-	elsif "#{params[:shop]}" == "maccosmetics"
-		advertiser_id = "57"
-		offer_id = "412"
-		creative_id = "1445"
-	elsif "#{params[:shop]}" == "avon"
-		advertiser_id = "58"
-		offer_id = "413"
-		creative_id = "1446"
+	if true
+		if "#{params[:shop]}" == "sephora"
+			advertiser_id = "50"
+			offer_id = "407"
+			creative_id = "1442"
+		elsif "#{params[:shop]}" == "maccosmetics"
+			advertiser_id = ""
+			offer_id = ""
+			creative_id = ""
+		elsif "#{params[:shop]}" == "avon"
+			advertiser_id = "49"
+			offer_id = "406"
+			creative_id = "1441"
+		end
+=begin
+[DEBUG] Created Affiliate id: 5754 after 2.291859325 seconds
+
+[DEBUG] shop: avon
+[DEBUG] Created Advertiser id: 49
+[DEBUG] Created Offer id: 406
+[DEBUG] Created Campaign id: 2818
+[DEBUG] Created Creative id: 1441
+creating advertiser and offer after 4.86458343 seconds
+
+[DEBUG] shop: sephora
+[DEBUG] Created Advertiser id: 50
+[DEBUG] Created Offer id: 407
+[DEBUG] Created Campaign id: 2819
+[DEBUG] Created Creative id: 1442
+
+=end
 	end
 
 
@@ -100,44 +116,11 @@ class ProcessingController < ApplicationController
 	end
 
 
-=begin OUTPUT LOGS
-SEPHORA
-[DEBUG] create Advertiser url: http://sandbox.cakemarketing.com/api/1/addedit.asmx/Advertiser?api_key=wSzLLbZyVZm1O9ZKQkzeDmt4wTYTKeC&advertiser_id=0&advertiser_name=ipsy-shopping-sephora&third_party_name=Integrate+an+external+system&account_status_id=1&online_signup=FALSE&signup_ip_address=&website=http://google.com&billing_cycle_id=3&account_manager_id=0&address_street=123_main_street&address_street2=&address_city=Fullerton&address_state=CA&address_zip_code=92831&address_country=US&notes=Open_Text&tags=
-[DEBUG] Created Advertiser id: 56
-[DEBUG] create Offer url: http://sandbox.cakemarketing.com/api/5/addedit.asmx/Offer?api_key=wSzLLbZyVZm1O9ZKQkzeDmt4wTYTKeC&offer_id=0&advertiser_id=56&vertical_id=1&offer_name=ipsy-offer-Big-Big-Discount&third_party_name=third_party&offer_status_id=1&offer_type_id=3&currency_id=1&ssl=off&click_cookie_days=30&impression_cookie_days=30&enable_view_thru_conversions=off&click_trumps_impression=off&disable_click_deduplication=off&last_touch=off&enable_transaction_id_deduplication=off&offer_contract_name=Offer+Contract+1&price_format_id=1&payout=3.25&received=4.35&received_percentage=off&offer_link=http://getCAKE.com&thankyou_link=http://getCAKE.com/thankyou&offer_contract_hidden=off&preview_link=http://getCAKE.com&offer_description=Hot+new+sneakers+for+you&restrictions=Only+for+sneakers,+not+sandals&advertiser_extended_terms=Must+be+a+human+to+run+Offer&testing_instructions=Use+a+fake+CC&tags=tagged&hidden=off&redirect_offer_contract_id=0&redirect_404=off&postbacks_only=off&pixel_html=&postback_url=&postback_url_ms_delay=0&fire_global_pixel=off&fire_pixel_on_non_paid_conversions=off&static_suppression=1&conversion_cap_behavior=0&conversion_behavior_on_redirect=0&expiration_date=12/31/2014%2013:59:59&expiration_date_modification_type=do_not_change&thumbnail_file_import_url=&allow_affiliates_to_create_creatives=off&unsubscribe_link=&from_lines=&subject_lines=&conversions_from_whitelist_only=off&allowed_media_type_modification_type=do_not_change&allowed_media_type_ids=&redirect_domain=&cookie_domain=&track_search_terms_from_non_supported_search_engines=off&auto_disposition_type=none&auto_disposition_delay_hours=0&session_regeneration_seconds=-1&session_regeneration_type_id=0&payout_modification_type=change&received_modification_type=change&tags_modification_type=do_not_change
-[DEBUG] Created Offer id: 411
-[DEBUG] Created Campaign id: 2823
-[DEBUG] Created Creative id: 1444
-[DEBUG] Created UNIQUE URL: http://strk.cakemarketing.com/?a=ipsy-user-1&c=1444&p=f&s1=
-Rendered processing/index.html.erb within layouts/application (2.7ms)
-
-MAC
-[DEBUG] create Advertiser url: http://sandbox.cakemarketing.com/api/1/addedit.asmx/Advertiser?api_key=wSzLLbZyVZm1O9ZKQkzeDmt4wTYTKeC&advertiser_id=0&advertiser_name=ipsy-shopping-mac&third_party_name=Integrate+an+external+system&account_status_id=1&online_signup=FALSE&signup_ip_address=&website=http://google.com&billing_cycle_id=3&account_manager_id=0&address_street=123_main_street&address_street2=&address_city=Fullerton&address_state=CA&address_zip_code=92831&address_country=US&notes=Open_Text&tags=
-[DEBUG] Created Advertiser id: 57
-[DEBUG] create Offer url: http://sandbox.cakemarketing.com/api/5/addedit.asmx/Offer?api_key=wSzLLbZyVZm1O9ZKQkzeDmt4wTYTKeC&offer_id=0&advertiser_id=57&vertical_id=1&offer_name=ipsy-offer-Big-Big-Discount&third_party_name=third_party&offer_status_id=1&offer_type_id=3&currency_id=1&ssl=off&click_cookie_days=30&impression_cookie_days=30&enable_view_thru_conversions=off&click_trumps_impression=off&disable_click_deduplication=off&last_touch=off&enable_transaction_id_deduplication=off&offer_contract_name=Offer+Contract+1&price_format_id=1&payout=3.25&received=4.35&received_percentage=off&offer_link=http://getCAKE.com&thankyou_link=http://getCAKE.com/thankyou&offer_contract_hidden=off&preview_link=http://getCAKE.com&offer_description=Hot+new+sneakers+for+you&restrictions=Only+for+sneakers,+not+sandals&advertiser_extended_terms=Must+be+a+human+to+run+Offer&testing_instructions=Use+a+fake+CC&tags=tagged&hidden=off&redirect_offer_contract_id=0&redirect_404=off&postbacks_only=off&pixel_html=&postback_url=&postback_url_ms_delay=0&fire_global_pixel=off&fire_pixel_on_non_paid_conversions=off&static_suppression=1&conversion_cap_behavior=0&conversion_behavior_on_redirect=0&expiration_date=12/31/2014%2013:59:59&expiration_date_modification_type=do_not_change&thumbnail_file_import_url=&allow_affiliates_to_create_creatives=off&unsubscribe_link=&from_lines=&subject_lines=&conversions_from_whitelist_only=off&allowed_media_type_modification_type=do_not_change&allowed_media_type_ids=&redirect_domain=&cookie_domain=&track_search_terms_from_non_supported_search_engines=off&auto_disposition_type=none&auto_disposition_delay_hours=0&session_regeneration_seconds=-1&session_regeneration_type_id=0&payout_modification_type=change&received_modification_type=change&tags_modification_type=do_not_change
-[DEBUG] Created Offer id: 412
-[DEBUG] Created Campaign id: 2824
-[DEBUG] Created Creative id: 1445
-creating advertiser and offer after 3.429690005 seconds
-
-AVON
-[DEBUG] create Advertiser url: http://sandbox.cakemarketing.com/api/1/addedit.asmx/Advertiser?api_key=wSzLLbZyVZm1O9ZKQkzeDmt4wTYTKeC&advertiser_id=0&advertiser_name=ipsy-shopping-avon&third_party_name=Integrate+an+external+system&account_status_id=1&online_signup=FALSE&signup_ip_address=&website=http://google.com&billing_cycle_id=3&account_manager_id=0&address_street=123_main_street&address_street2=&address_city=Fullerton&address_state=CA&address_zip_code=92831&address_country=US&notes=Open_Text&tags=
-[DEBUG] Created Advertiser id: 58
-[DEBUG] create Offer url: http://sandbox.cakemarketing.com/api/5/addedit.asmx/Offer?api_key=wSzLLbZyVZm1O9ZKQkzeDmt4wTYTKeC&offer_id=0&advertiser_id=58&vertical_id=1&offer_name=ipsy-offer-Big-Big-Discount&third_party_name=third_party&offer_status_id=1&offer_type_id=3&currency_id=1&ssl=off&click_cookie_days=30&impression_cookie_days=30&enable_view_thru_conversions=off&click_trumps_impression=off&disable_click_deduplication=off&last_touch=off&enable_transaction_id_deduplication=off&offer_contract_name=Offer+Contract+1&price_format_id=1&payout=3.25&received=4.35&received_percentage=off&offer_link=http://getCAKE.com&thankyou_link=http://getCAKE.com/thankyou&offer_contract_hidden=off&preview_link=http://getCAKE.com&offer_description=Hot+new+sneakers+for+you&restrictions=Only+for+sneakers,+not+sandals&advertiser_extended_terms=Must+be+a+human+to+run+Offer&testing_instructions=Use+a+fake+CC&tags=tagged&hidden=off&redirect_offer_contract_id=0&redirect_404=off&postbacks_only=off&pixel_html=&postback_url=&postback_url_ms_delay=0&fire_global_pixel=off&fire_pixel_on_non_paid_conversions=off&static_suppression=1&conversion_cap_behavior=0&conversion_behavior_on_redirect=0&expiration_date=12/31/2014%2013:59:59&expiration_date_modification_type=do_not_change&thumbnail_file_import_url=&allow_affiliates_to_create_creatives=off&unsubscribe_link=&from_lines=&subject_lines=&conversions_from_whitelist_only=off&allowed_media_type_modification_type=do_not_change&allowed_media_type_ids=&redirect_domain=&cookie_domain=&track_search_terms_from_non_supported_search_engines=off&auto_disposition_type=none&auto_disposition_delay_hours=0&session_regeneration_seconds=-1&session_regeneration_type_id=0&payout_modification_type=change&received_modification_type=change&tags_modification_type=do_not_change
-[DEBUG] Created Offer id: 413
-[DEBUG] Created Campaign id: 2825
-[DEBUG] Created Creative id: 1446
-creating advertiser and offer after 3.264792307 seconds
-=end
-######### END
-
-	
-
 
 	# STATIC PARAMS FOR TESTING ONLY
+	puts "STATIC PARAMS"
 	affiliate_id = "1"
-	creative_id = "98"
-
+	creative_id = "98"	
 
 
 	puts "[DEBUG] affiliate_id: #{affiliate_id}"
@@ -147,7 +130,7 @@ creating advertiser and offer after 3.264792307 seconds
 	puts "[DEBUG] creative_id: #{creative_id}"
 
 	# Generate Unique URL
-  	cake_url = "http://strk.cakemarketing.com/?a=#{affiliate_id}&c=#{creative_id}&s1="
+  	cake_url = "http://strk.cakemarketing.com/?a=#{affiliate_id}&c=#{creative_id}"
 	puts "[DEBUG] Created UNIQUE URL: #{cake_url}"
 
 	# encode the Unique URL to send as parameter to the redirect site
