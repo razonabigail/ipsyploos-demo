@@ -13,11 +13,16 @@ class ProcessingController < ApplicationController
 	offer_id = "0"
 	creative_id = "0"
 
+	
 	# TODO affiliate_id should be queried from the database
-	affiliate_id = "1"
-	creative_id = "98"
 
 	# TODO advertiser_id, creative_id, offer_id should be queried from the database
+
+
+	# STATIC PARAMS FOR TESTING ONLY
+	affiliate_id = "1"
+	creative_id = "98"	
+
 	if "#{params[:shop]}" == "sephora"
 		advertiser_id = "56"
 		offer_id = "411"
@@ -126,7 +131,10 @@ creating advertiser and offer after 3.264792307 seconds
 =end
 ######### END
 
+	
 
+
+	# STATIC PARAMS FOR TESTING ONLY
 	affiliate_id = "1"
 	creative_id = "98"
 
@@ -150,7 +158,7 @@ creating advertiser and offer after 3.264792307 seconds
 	# PASS params to shop url
 	shop_url = "http://localhost:3001"
 
-	full_url = "#{shop_url}/mainpage?encoded_url=#{encoded_url}&affiliate_id=#{affiliate_id}&creative_id=#{creative_id}"
+	full_url = "#{shop_url}/mainpage?encoded_url=#{encoded_url}"
 
 	puts "[DEBUG] Encoded FULL URL: #{full_url}"
 
