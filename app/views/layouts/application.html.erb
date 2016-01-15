@@ -15,15 +15,14 @@
 			<p class="sign_in"><%= link_to "Log In / Sign Up", new_user_session_path %></p>
 			<% end %>
 			<% if user_signed_in? %>
+				Hi <%="ipsy-user-#{current_user.id}," %>
+
 				<div class="buttons">
-					<form action="/processing" method="get"><input type="hidden" name="shop" value="avon"><input type="hidden" name="creative_id" value="1"><button>AVON</button></form>
+					<form action="/processing" method="get"><input type="hidden" name="shop" value="avon"><input type="hidden" name="offer_id" value="1"><button disabled>AVON</button></form>
 
-					<form action="/processing" method="get"><input type="hidden" name="shop" value="maccosmetics"><input type="hidden" name="creative_id" value="2"><button>MAC</button></form>
+					<form action="/processing" method="get"><input type="hidden" name="shop" value="maccosmetics"><input type="hidden" name="offer_id" value="2"><button disabled>MAC</button></form>
 
-					<form action="/processing" method="get"><input type="hidden" name="shop" value="sephora"><input type="hidden" name="creative_id" value="3"><button>SEPHORA</button></form>
-
-
-
+					<form action="/processing" method="get"><input type="hidden" name="shop" value="Dummy Advertiser"><input type="hidden" name="offer_id" value="17"><button>Dummy Advertiser 2</button></form>
 					
 					<br>
 					<button class="button"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>
