@@ -18,11 +18,20 @@
 				Hi <%="ipsy-user-#{current_user.id}," %>
 
 				<div class="buttons">
-					<form action="/processing" method="get"><input type="hidden" name="shop" value="avon"><input type="hidden" name="offer_id" value="1"><button disabled>AVON</button></form>
+					<form action="/processing" method="get"><button disabled>AVON</button></form>
+					<form action="/processing" method="get"><button disabled>MAC</button></form>
 
-					<form action="/processing" method="get"><input type="hidden" name="shop" value="maccosmetics"><input type="hidden" name="offer_id" value="2"><button disabled>MAC</button></form>
+					<form action="/processing" method="get">
+					<input type="hidden" name="shop" value="Dummy Advertiser 2">
+					<input type="hidden" name="url" value="http://localhost:3001">
+					<input type="hidden" name="offer_id" value="17">
+					<button>Dummy Advertiser 2 using server postback with Transaction ID (cookieless)</button></form>
 
-					<form action="/processing" method="get"><input type="hidden" name="shop" value="Dummy Advertiser"><input type="hidden" name="offer_id" value="17"><button>Dummy Advertiser 2</button></form>
+					<form action="/processing" method="get">
+					<input type="hidden" name="shop" value="Dummy Advertiser 3">
+					<input type="hidden" name="url" value="http://localhost:3001">
+					<input type="hidden" name="offer_id" value="21">
+					<button>Dummy Advertiser 3 using HTTP iframe pixel (with cookies)</button></form>
 					
 					<br>
 					<button class="button"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>
